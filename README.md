@@ -1,11 +1,11 @@
 # Study Buddies
 
 Study Buddies is a peer study support web application designed to help university students
-find and offer academic support to each other. The platform focuses on sharing knowledge,
-collaboration, and building a supportive learning community without financial exchange.
+find and offer academic support to each other. The platform focuses on collaboration,
+knowledge sharing, and building a supportive learning community without financial exchange.
 
 ## Project Status
-This project is currently in early setup (Sprint 1).
+Sprint 1 – Initial setup and planning
 
 ## Team
 - Rahul Panthi
