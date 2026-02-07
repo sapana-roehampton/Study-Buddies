@@ -3,7 +3,7 @@
 ## Meeting 1: Project Kick-off
 
 **Date:** 2 February 2026  
-**Mode:** In-person / Online (GitHub + discussion)  
+**Mode:** In-person 
 **Participants:**  
 - Sapana Pandey  
 - Rahul Panthi  
@@ -33,7 +33,7 @@
 ## Meeting 2: Sprint 1 Progress Review
 
 **Date:** 6 February 2026  
-**Mode:** In-person / Online  
+**Mode:** Online  
 **Participants:**  
 - Sapana Pandey  
 - Rahul Panthi  
