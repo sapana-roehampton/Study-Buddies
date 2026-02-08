@@ -18,7 +18,7 @@
 - Set up GitHub repository and tools
 
 ### Discussion Summary
-- Agreed on the project idea: *Study Buddies*, a peer study support web application.
+- Agreed on the project idea: Study Buddies, a peer study support web application.
 - Decided to use GitHub for version control and collaboration.
 - Created initial README, Kanban board, and issues.
 - Discussed ethical considerations and respectful platform use.
