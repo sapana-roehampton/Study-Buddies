@@ -5,27 +5,27 @@ We aim to provide a respectful, inclusive, and supportive environment for everyo
 
 ## Expected Behaviour
 Participants in this project are expected to:
-- Be respectful and considerate in communication.
-- Collaborate positively and support the team.
+- Communicate with consideration and deference.
+- Encourage the team and work cooperatively.
 - Accept constructive feedback and discuss disagreements professionally.
-- Using the platform only for its intended academic purpose.
+- Platform is used only for academic purposes.
 
 ## Unacceptable Behaviour
 The following behaviours are not tolerated:
 - Harassment, discrimination, or offensive language.
-- Sharing private information without consent.
+- Sharing personal data without permission.
 - Misusing the platform for non-academic or harmful activities.
-- Encouraging academic dishonesty or cheating.
+- Promoting academic dishonesty or cheating.
 
 ## Responsibilities
-- Team members must follow agreed project rules and deadlines.
-- Any issues should be raised respectfully within the group.
-- Serious concerns should be reported to the course instructor if needed.
+- Team members should follow agreed project rules and deadlines.
+- Any disagreements should be politely discussed among team members.
+- If necessary, serious issues should be brought to the attention of the course instructor.
 
 ## Enforcement
 Violations of this Code of Conduct may result in:
 - Removal of access to the project repository.
-- Escalation to academic staff if necessary.
+- If required, escalation to academic staff.
 
 ## Scope
 This Code of Conduct applies to:
