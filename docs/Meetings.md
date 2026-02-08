@@ -48,7 +48,6 @@
 - Reviewed README, personas, ethics, and Code of Conduct.
 - Confirmed GitHub structure (backend, frontend, docs).
 - Docker installed on available team laptops.
-- Remaining members to install Docker later.
 
 ### Decisions Made
 - Complete Sprint 1 documentation.
