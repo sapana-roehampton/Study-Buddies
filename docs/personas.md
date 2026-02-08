@@ -11,7 +11,7 @@
   - Feels shy asking questions in lectures
   - Doesn’t know who else is studying the same topics
   - Struggles to stay consistent studying alone
-- How Aisha would use Study Buddies:
+- How Isha would use Study Buddies:
   - Creates a profile, adds modules/subjects and availability
   - Searches for “Programming” and “Databases”
   - Messages a suitable study buddy and agrees a study session
@@ -26,7 +26,7 @@
 - Frustrations / Pain points:
   - Hard to find structured ways to help others
   - Wants clear expectations (topic, time, level) before agreeing
-- How Tom would use Study Buddies:
+- How Abishek would use Study Buddies:
   - Creates a profile listing subjects he can help with
   - Sets availability and preferred study style (online/in-person)
   - Accepts requests and chats to plan a session
