@@ -24,7 +24,6 @@
 - Agreed to use Docker for development environment setup.
 
 ### Decisions Made
-- Sapana to act as group coordinator.
 - All members to contribute equally.
 - Sprint 1 focus: planning, documentation, and setup.
 
