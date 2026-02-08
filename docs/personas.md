@@ -12,7 +12,7 @@
   - Doesn’t know who else is studying the same topics
   - Struggles to stay consistent studying alone
 - How Isha would use Study Buddies:
-  - Creates a profile, adds modules/subjects and availability
+  - Creates a profile, adds modules/subjects and availabilites
   - Searches for “Programming” and “Databases”
   - Messages a suitable study buddy and agrees a study session
 
