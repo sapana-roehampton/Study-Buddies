@@ -1,14 +1,14 @@
 # Code of Conduct – Study Buddies
 
 ## Our Pledge
-We are committed to providing a respectful, inclusive, and supportive environment for everyone involved in the Study Buddies project.
+We aim to provide a respectful, inclusive, and supportive environment for everyone involved in the Study Buddies project.
 
 ## Expected Behaviour
 Participants in this project are expected to:
 - Be respectful and considerate in communication.
-- Collaborate positively and support team members.
+- Collaborate positively and support the team.
 - Accept constructive feedback and discuss disagreements professionally.
-- Use the platform only for its intended academic purpose.
+- Using the platform only for its intended academic purpose.
 
 ## Unacceptable Behaviour
 The following behaviours are not tolerated:
