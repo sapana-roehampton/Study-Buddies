@@ -29,6 +29,6 @@ Sprint 1 – Planning, setup, and documentation
 
 ## Group Members
 - Rahul Panthi (A00030612)
-- Sudip Paudel(A00023144)
-- Susan Thapa(A00023010)
-- Sapana Pandey(A00034818)
+- Sudip Paudel (A00023144)
+- Susan Thapa (A00023010)
+- Sapana Pandey (A00034818)
