@@ -28,7 +28,7 @@ find peers studying similar subjects and collaborate effectively.
 Sprint 1 – Planning, setup, and documentation
 
 ## Group Members
-- Rahul Panthi
-- Sudip Paudel
-- Susan Thapa
-- Sapana Pandey
+- Rahul Panthi (A00030612)
+- Sudip Paudel(A00023144)
+- Susan Thapa(AOOO23010)
+- Sapana Pandey(A00034818)
