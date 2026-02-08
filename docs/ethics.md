@@ -6,7 +6,7 @@
 - Store data securely and avoid exposing profiles publicly by default.
 
 ## 2. Safety and misuse
-- The platform could be misused for harassment or unwanted contact.
+- The platform could be misused for harassment or unnecessary contact.
 - Provide reporting/blocking tools and clear rules for behaviour.
 
 ## 3. Fairness and inclusion
