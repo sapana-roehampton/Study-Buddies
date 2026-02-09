@@ -4,7 +4,8 @@
 Study Buddies is a peer study support web application designed to help university students to
 connect with each other for academic support. The platform is based on collaboration,
 knowledge sharing, and building a supportive learning community without any financial exchange.
-It aligns with the theme of “Sharing, exchange and building community”.
+The project supports the theme of Sharing, exchange and building community by encouraging cooperative learning 
+and exchange of knowledge in a non-commercial environment. Students can both provide and receive academic assistance, fostering to create an inclusive and supportive learning community.
 
 ## Problem Statement
 Many students struggle to find study partners or academic support outside the classroom.
