@@ -22,7 +22,7 @@ The following behaviours are not tolerated:
 - Any disagreements should be politely discussed among team members.
 - If necessary, serious issues should be brought to the attention of the course instructor.
 
-## Enforcement
+## Enforcement and Consequences
 Violations of this Code of Conduct may result in:
 - Removal of access to the project repository.
 - If required, escalation to academic staff.
