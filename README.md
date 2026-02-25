@@ -8,16 +8,14 @@ The project supports the theme of Sharing, exchange and building community by en
 and exchange of knowledge in a non-commercial environment. Students can both provide and receive academic assistance, fostering to create an inclusive and supportive learning community.
 
 ## Problem Statement
-Many students struggle to find study partners or academic support outside the classroom.
-Study Buddies aims to reduce academic isolation by providing a simple way for students to
-find peers studying similar subjects and collaborate effectively.
+Many university students experience academic isolation and difficulty finding suitable study partners outside scheduled classes. Existing communication platforms are not specifically designed for structured academic collaboration. Study Buddies aims to address this issue by providing a dedicated system where students can search, match, and communicate based on shared academic interests.
 
 ## Planned Features
-- Create and manage user profiles
+- User registration and profile management
 - Search for study partners by subject or course
-- Match students based on shared academic interests
-- In-app messaging between users
-- Tags or categories for subjects and skills
+- Matching system based on shared academic interests
+- Secure in-app messaging between users
+- Subject tags and categorisation
 
 ## Technology Stack (Planned)
 - Frontend: HTML, CSS, JavaScript, PUG
@@ -26,7 +24,7 @@ find peers studying similar subjects and collaborate effectively.
 - DevOps: Docker, GitHub Actions
 
 ## Project Status
-Sprint 1 – Planning, setup, and documentation
+Sprint 1 – Planning, requirement analysis, and documentation
 
 ## Group Members
 - Rahul Panthi (A00030612)
