@@ -15,3 +15,10 @@ This folder contains all diagrams and designs prepared for Sprint 2.
 
 
 <img width="511" height="826" alt="activity-view-user-profile" src="https://github.com/user-attachments/assets/7e87e30c-95c6-4a8c-9d4a-63d2f139d005" />
+
+
+
+## Erd Diagram for Sprint 2
+
+![Erd-diagram png](https://github.com/user-attachments/assets/ae654252-ff13-40e3-ae9b-65ec513ffcc7)
+
