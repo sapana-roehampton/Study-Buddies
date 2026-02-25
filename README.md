@@ -17,7 +17,7 @@ Many university students experience academic isolation and difficulty finding su
 - Secure in-app messaging between users
 - Subject tags and categorisation
 
-## Technology Stack (Planned)
+## Technology Stack
 - Frontend: HTML, CSS, JavaScript, PUG
 - Backend: Node.js, Express.js
 - Database: MySQL
