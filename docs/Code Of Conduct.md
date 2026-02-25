@@ -29,8 +29,10 @@ If a team member breaches this Code of Conduct, the team will follow these steps
 
 1.Discussion:
 The issue will first be discussed in a team meeting and an improvement plan agreed.
+
 2.Formal Reminder:
 If the issue continues, it will be documented in the meeting minutes with clear expectations and a deadline.
+
 3.Task Monitoring:
 Responsibilities may be redistributed or tasks closely tracked on the GitHub Kanban board.
 
