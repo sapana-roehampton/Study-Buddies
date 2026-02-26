@@ -42,7 +42,7 @@ The database schema includes Users, Listings, and Tags, with User_Tags and Listi
 ## Wireframe For Sprint 2
 This project implements a multi-page user interface based on the Study Buddies wireframes. It allows students to view profiles, browse listings, and create study requests through a structured and consistent navigation system. The prototype demonstrates the transformation of wireframe designs into a functional interface that can later be integrated with a database.
 
-![wireframe img](https://github.com/user-attachments/assets/8d8ea4e0-3dbe-4166-87da-40828e3e3aef)
+<img src="https://github.com/user-attachments/assets/8d8ea4e0-3dbe-4166-87da-40828e3e3aef" width ="550">
 ![wireframe](https://github.com/user-attachments/assets/af94af21-ffa2-4b6e-be96-5f1c966ec330)
 ![wireframe image image](https://github.com/user-attachments/assets/33588243-75fd-4541-a021-42fe856eb738)
 
@@ -50,7 +50,7 @@ This project implements a multi-page user interface based on the Study Buddies w
 
 
 ## Flowchart Of Wireframe
-![wireframe flowchart](https://github.com/user-attachments/assets/9992e607-e849-46a6-9c53-5b7a38588827)
+<img src="https://github.com/user-attachments/assets/9992e607-e849-46a6-9c53-5b7a38588827" width ="550">
 
 
 
