@@ -40,6 +40,9 @@ This project implements a multi-page user interface based on the Study Buddies w
 
 ## Use Case Diagram
 
+The use case diagram illustrates the interaction between the Student and the Study Buddies system. It includes core Sprint 3 functionalities such as viewing users, viewing listings, creating listings, and assigning module tags. The diagram also shows that viewing listing details is included within viewing listings, while search and filter functionality extends it, clearly defining the system scope for Sprint 3.
+
+
 <img width="842" height="706" alt="use-case-diagram (4)" src="https://github.com/user-attachments/assets/81ee27de-ec78-4dec-956e-e2ffbb2e179f" />
 
 
