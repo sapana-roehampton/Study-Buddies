@@ -1,5 +1,11 @@
 # Sprint 2 Documentation
 
+Based on Sprint 1 feedback, we refined our project by strengthening our Code of Conduct enforcement process, improving personas with realistic scenarios, and clarifying the ethical considerations related to privacy, fairness, and responsible platform use.
+The goal of Sprint 2 is to define clear requirements and prepare the technical and design specifications needed for Sprint 3 development.
+
+
+---
+
 This folder contains all diagrams and designs prepared for Sprint 2.
 
 ---
