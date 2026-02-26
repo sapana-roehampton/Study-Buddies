@@ -38,5 +38,11 @@ Overall, in this project, the practical aspects in the GUI design, event-based p
 ## Flowchart Of Wireframe
 ![wireframe flowchart](https://github.com/user-attachments/assets/9992e607-e849-46a6-9c53-5b7a38588827)
 
+---
+
+## Use Case Diagram
+
+<img width="842" height="706" alt="use-case-diagram (4)" src="https://github.com/user-attachments/assets/81ee27de-ec78-4dec-956e-e2ffbb2e179f" />
+
 
 
