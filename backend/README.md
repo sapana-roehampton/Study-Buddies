@@ -1,1 +1,1 @@
-This folder will contain Express.js server logic, routes, and database integration in Sprint 3.
+This folder will contain the Express.js server logic, routing configuration, and MySQL database integration implemented during Sprint 3.
