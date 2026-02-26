@@ -44,7 +44,7 @@ This project implements a multi-page user interface based on the Study Buddies w
 
 ![wireframe img](https://github.com/user-attachments/assets/8d8ea4e0-3dbe-4166-87da-40828e3e3aef)
 ![wireframe](https://github.com/user-attachments/assets/af94af21-ffa2-4b6e-be96-5f1c966ec330)
-wireframe image image](https://github.com/user-attachments/assets/33588243-75fd-4541-a021-42fe856eb738)
+![wireframe image image](https://github.com/user-attachments/assets/33588243-75fd-4541-a021-42fe856eb738)
 
 
 
