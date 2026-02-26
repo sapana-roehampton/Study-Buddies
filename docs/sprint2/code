@@ -1,0 +1,330 @@
+## Python Code For Wireframe
+import tkinter as tk
+from tkinter import ttk, messagebox
+
+
+class App(tk.Tk):
+    def __init__(self):
+        super().__init__()
+        self.title("Wireframe GUI (Tkinter)")
+        self.geometry("980x720")
+        self.minsize(980, 720)
+
+        # In-memory demo data (you can replace with SQLite later)
+        self.users = [
+            {"name": "John Doe", "course": "Computer Science", "tags": ["Web Dev", "AI", "Databases"],
+             "bio": "Lorem ipsum placeholder text"},
+            {"name": "Jane Smith", "course": "Software Engineering", "tags": ["UX", "Java", "Cloud"],
+             "bio": "Lorem ipsum placeholder text"},
+        ]
+        self.listings = [
+            {"title": "Need Help with React", "module": "Web Dev", "datetime": "20 Feb – 3PM"},
+            {"title": "Study Group – Databases", "module": "Databases", "datetime": "22 Feb – 5PM"},
+        ]
+
+        # Layout: header + content
+        self.header = ttk.Frame(self, padding=(10, 10))
+        self.header.pack(fill="x")
+
+        ttk.Label(self.header, text="Study Connect (Wireframe)", font=("Arial", 16, "bold")).pack(side="left")
+
+        self.container = ttk.Frame(self, padding=(10, 10))
+        self.container.pack(fill="both", expand=True)
+
+        # Pages
+        self.pages = {}
+        for PageCls in (UsersListPage, ListingsListPage, UserProfilePage, ListingDetailPage, CreateListingPage):
+            page = PageCls(self.container, self)
+            self.pages[PageCls.__name__] = page
+            page.grid(row=0, column=0, sticky="nsew")
+
+        self.container.rowconfigure(0, weight=1)
+        self.container.columnconfigure(0, weight=1)
+
+        # Default selections
+        self.selected_user_index = 0
+        self.selected_listing_index = 0
+
+        self.show_page("UsersListPage")
+
+    def show_page(self, name: str):
+        page = self.pages[name]
+        page.tkraise()
+        if hasattr(page, "refresh"):
+            page.refresh()
+
+    def set_selected_user(self, idx: int):
+        self.selected_user_index = idx
+        self.show_page("UserProfilePage")
+
+    def set_selected_listing(self, idx: int):
+        self.selected_listing_index = idx
+        self.show_page("ListingDetailPage")
+
+
+class NavBar(ttk.Frame):
+    """Reusable Navigation Bar (wireframe style)."""
+    def __init__(self, parent, app: App):
+        super().__init__(parent, padding=(8, 8))
+        self.app = app
+
+        self.columnconfigure(0, weight=1)
+
+        left = ttk.Frame(self)
+        left.grid(row=0, column=0, sticky="w")
+
+        ttk.Button(left, text="Users", command=lambda: app.show_page("UsersListPage")).pack(side="left", padx=(0, 6))
+        ttk.Button(left, text="Listings", command=lambda: app.show_page("ListingsListPage")).pack(side="left", padx=(0, 6))
+        ttk.Button(left, text="Create Listing", command=lambda: app.show_page("CreateListingPage")).pack(side="left")
+
+        right = ttk.Frame(self)
+        right.grid(row=0, column=1, sticky="e")
+        ttk.Label(right, text="Navigation Bar", font=("Arial", 10, "bold")).pack()
+
+
+class TagPill(ttk.Frame):
+    def __init__(self, parent, text: str):
+        super().__init__(parent)
+        lbl = ttk.Label(self, text=text, padding=(8, 2))
+        lbl.pack()
+        # A subtle bordered look
+        self.configure(relief="solid", padding=1)
+
+
+class UsersListPage(ttk.Frame):
+    def __init__(self, parent, app: App):
+        super().__init__(parent)
+        self.app = app
+
+        ttk.Label(self, text="Users List Page", font=("Arial", 14, "bold")).pack(fill="x", pady=(0, 8))
+        NavBar(self, app).pack(fill="x", pady=(0, 10))
+
+        # Search bar
+        search_wrap = ttk.Frame(self)
+        search_wrap.pack(fill="x", pady=(0, 10))
+        ttk.Label(search_wrap, text="Search Bar:").pack(side="left")
+        self.search_var = tk.StringVar()
+        self.search_entry = ttk.Entry(search_wrap, textvariable=self.search_var)
+        self.search_entry.pack(side="left", fill="x", expand=True, padx=(8, 0))
+        self.search_entry.bind("<KeyRelease>", lambda e: self.refresh())
+
+        self.cards_wrap = ttk.Frame(self)
+        self.cards_wrap.pack(fill="both", expand=True)
+
+    def refresh(self):
+        for w in self.cards_wrap.winfo_children():
+            w.destroy()
+
+        query = self.search_var.get().strip().lower()
+
+        for idx, u in enumerate(self.app.users):
+            # Simple filter: name/course/tags
+            searchable = " ".join([u["name"], u["course"], " ".join(u["tags"])]).lower()
+            if query and query not in searchable:
+                continue
+
+            card = ttk.Frame(self.cards_wrap, padding=10, relief="solid")
+            card.pack(fill="x", pady=6)
+
+            ttk.Label(card, text=f"Name: {u['name']}", font=("Arial", 11, "bold")).pack(anchor="w")
+            ttk.Label(card, text=f"Course: {u['course']}").pack(anchor="w", pady=(2, 6))
+
+            tags_row = ttk.Frame(card)
+            tags_row.pack(anchor="w")
+            ttk.Label(tags_row, text="Tags: ").pack(side="left")
+            for t in u["tags"]:
+                TagPill(tags_row, t).pack(side="left", padx=4)
+
+            ttk.Button(card, text="View Profile", command=lambda i=idx: self.app.set_selected_user(i)).pack(
+                anchor="e", pady=(8, 0)
+            )
+
+
+class ListingsListPage(ttk.Frame):
+    def __init__(self, parent, app: App):
+        super().__init__(parent)
+        self.app = app
+
+        ttk.Label(self, text="Listings Page", font=("Arial", 14, "bold")).pack(fill="x", pady=(0, 8))
+        NavBar(self, app).pack(fill="x", pady=(0, 10))
+
+        self.cards_wrap = ttk.Frame(self)
+        self.cards_wrap.pack(fill="both", expand=True)
+
+    def refresh(self):
+        for w in self.cards_wrap.winfo_children():
+            w.destroy()
+
+        for idx, l in enumerate(self.app.listings):
+            card = ttk.Frame(self.cards_wrap, padding=10, relief="solid")
+            card.pack(fill="x", pady=6)
+
+            ttk.Label(card, text=f"Title: {l['title']}", font=("Arial", 11, "bold")).pack(anchor="w")
+            ttk.Label(card, text=f"Module: {l['module']}").pack(anchor="w", pady=(2, 0))
+
+            # ✅ Your change: show Date/Time (no Created By on this card)
+            ttk.Label(card, text=f"Date/Time: {l['datetime']}").pack(anchor="w", pady=(2, 6))
+
+            ttk.Button(card, text="Open", command=lambda i=idx: self.app.set_selected_listing(i)).pack(anchor="e")
+
+
+class UserProfilePage(ttk.Frame):
+    def __init__(self, parent, app: App):
+        super().__init__(parent)
+        self.app = app
+
+        ttk.Label(self, text="User Profile Page", font=("Arial", 14, "bold")).pack(fill="x", pady=(0, 8))
+        NavBar(self, app).pack(fill="x", pady=(0, 10))
+
+        self.profile_card = ttk.Frame(self, padding=12, relief="solid")
+        self.profile_card.pack(fill="x", pady=(0, 10))
+
+        self.lbl_name = ttk.Label(self.profile_card, text="", font=("Arial", 12, "bold"))
+        self.lbl_course = ttk.Label(self.profile_card, text="")
+        self.tags_row = ttk.Frame(self.profile_card)
+
+        self.lbl_name.pack(anchor="w")
+        self.lbl_course.pack(anchor="w", pady=(2, 6))
+        self.tags_row.pack(anchor="w")
+
+        # Bio
+        self.bio_card = ttk.Frame(self, padding=12, relief="solid")
+        self.bio_card.pack(fill="both", expand=True)
+
+        ttk.Label(self.bio_card, text="Bio Section", font=("Arial", 11, "bold")).pack(anchor="w")
+        self.bio_text = tk.Text(self.bio_card, height=8, wrap="word")
+        self.bio_text.pack(fill="both", expand=True, pady=(6, 0))
+        self.bio_text.configure(state="disabled")
+
+    def refresh(self):
+        u = self.app.users[self.app.selected_user_index]
+
+        self.lbl_name.config(text=f"Name: {u['name']}")
+        self.lbl_course.config(text=f"Course: {u['course']}")
+
+        for w in self.tags_row.winfo_children():
+            w.destroy()
+
+        ttk.Label(self.tags_row, text="Tags: ").pack(side="left")
+        for t in u["tags"]:
+            TagPill(self.tags_row, t).pack(side="left", padx=4)
+
+        self.bio_text.configure(state="normal")
+        self.bio_text.delete("1.0", "end")
+        self.bio_text.insert("1.0", u.get("bio", ""))
+        self.bio_text.configure(state="disabled")
+
+
+class ListingDetailPage(ttk.Frame):
+    def __init__(self, parent, app: App):
+        super().__init__(parent)
+        self.app = app
+
+        ttk.Label(self, text="Listing Detail Page", font=("Arial", 14, "bold")).pack(fill="x", pady=(0, 8))
+        NavBar(self, app).pack(fill="x", pady=(0, 10))
+
+        self.detail_card = ttk.Frame(self, padding=12, relief="solid")
+        self.detail_card.pack(fill="x")
+
+        self.lbl_title = ttk.Label(self.detail_card, text="", font=("Arial", 12, "bold"))
+        self.lbl_module = ttk.Label(self.detail_card, text="")
+        self.lbl_datetime = ttk.Label(self.detail_card, text="")
+
+        self.lbl_title.pack(anchor="w")
+        self.lbl_module.pack(anchor="w", pady=(4, 0))
+        self.lbl_datetime.pack(anchor="w", pady=(4, 0))
+
+        btns = ttk.Frame(self)
+        btns.pack(fill="x", pady=10)
+        ttk.Button(btns, text="Back to Listings", command=lambda: app.show_page("ListingsListPage")).pack(side="left")
+
+    def refresh(self):
+        l = self.app.listings[self.app.selected_listing_index]
+        self.lbl_title.config(text=f"Title: {l['title']}")
+        self.lbl_module.config(text=f"Module: {l['module']}")
+        self.lbl_datetime.config(text=f"Date/Time: {l['datetime']}")
+
+
+class CreateListingPage(ttk.Frame):
+    def __init__(self, parent, app: App):
+        super().__init__(parent)
+        self.app = app
+
+        ttk.Label(self, text="Create Listing Page", font=("Arial", 14, "bold")).pack(fill="x", pady=(0, 8))
+        NavBar(self, app).pack(fill="x", pady=(0, 10))
+
+        form = ttk.Frame(self, padding=12, relief="solid")
+        form.pack(fill="x")
+
+        # Title
+        ttk.Label(form, text="Title Input").grid(row=0, column=0, sticky="w", pady=6)
+        self.title_var = tk.StringVar()
+        ttk.Entry(form, textvariable=self.title_var).grid(row=0, column=1, sticky="ew", padx=10)
+
+        # Module dropdown
+        ttk.Label(form, text="Module Dropdown").grid(row=1, column=0, sticky="w", pady=6)
+        self.module_var = tk.StringVar(value="Select Module")
+        self.module_combo = ttk.Combobox(
+            form,
+            textvariable=self.module_var,
+            values=["Web Dev", "Databases", "AI", "Cloud", "UX", "Java"],
+            state="readonly"
+        )
+        self.module_combo.grid(row=1, column=1, sticky="w", padx=10)
+
+        # Description box
+        ttk.Label(form, text="Description Box").grid(row=2, column=0, sticky="nw", pady=6)
+        self.desc_txt = tk.Text(form, height=6, wrap="word")
+        self.desc_txt.grid(row=2, column=1, sticky="ew", padx=10)
+
+        # Date/Time input
+        ttk.Label(form, text="Date/Time Input").grid(row=3, column=0, sticky="w", pady=6)
+        self.dt_var = tk.StringVar()
+        ttk.Entry(form, textvariable=self.dt_var).grid(row=3, column=1, sticky="w", padx=10)
+
+        # Create button
+        ttk.Button(form, text="Create Listing", command=self.create_listing).grid(
+            row=4, column=0, columnspan=2, pady=(12, 0)
+        )
+
+        form.columnconfigure(1, weight=1)
+
+    def create_listing(self):
+        title = self.title_var.get().strip()
+        module = self.module_var.get().strip()
+        dt = self.dt_var.get().strip()
+        desc = self.desc_txt.get("1.0", "end").strip()
+
+        if not title:
+            messagebox.showerror("Validation Error", "Please enter a Title.")
+            return
+        if module in ("", "Select Module"):
+            messagebox.showerror("Validation Error", "Please select a Module.")
+            return
+        if not dt:
+            messagebox.showerror("Validation Error", "Please enter Date/Time (e.g., 20 Feb – 3PM).")
+            return
+
+        # Store listing (desc not displayed in wireframe cards, but kept for later use)
+        self.app.listings.insert(0, {"title": title, "module": module, "datetime": dt, "description": desc})
+
+        # Reset form
+        self.title_var.set("")
+        self.module_var.set("Select Module")
+        self.dt_var.set("")
+        self.desc_txt.delete("1.0", "end")
+
+        messagebox.showinfo("Success", "Listing created!")
+        self.app.show_page("ListingsListPage")
+
+
+if __name__ == "__main__":
+    # Improve default look a bit
+    app = App()
+    try:
+        style = ttk.Style()
+        if "clam" in style.theme_names():
+            style.theme_use("clam")
+    except Exception:
+        pass
+    app.mainloop()
