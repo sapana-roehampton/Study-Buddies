@@ -40,8 +40,8 @@ Two UML activity diagrams were created to model the system workflows for creatin
 This project implements a multi-page user interface based on the Study Buddies wireframes. It allows students to view profiles, browse listings, and create study requests through a structured and consistent navigation system. The prototype demonstrates the transformation of wireframe designs into a functional interface that can later be integrated with a database.
 
 ![wireframe img](https://github.com/user-attachments/assets/8d8ea4e0-3dbe-4166-87da-40828e3e3aef)
-![wireframe image](https://github.com/user-attachments/assets/d1f7ed73-2a34-4812-ae86-055a913567c0)
-![wireframe image image](https://github.com/user-attachments/assets/33588243-75fd-4541-a021-42fe856eb738)
+![![wireframe-diagram png](https://github.com/user-attachments/assets/bd3ae724-9dc9-458b-994a-241d6804dfc7)
+wireframe image image](https://github.com/user-attachments/assets/33588243-75fd-4541-a021-42fe856eb738)
 
 
 
