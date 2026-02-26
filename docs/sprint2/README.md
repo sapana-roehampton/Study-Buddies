@@ -6,7 +6,7 @@ This folder contains all diagrams and designs prepared for Sprint 2.
 
 
 ## Activity Diagram
-Two UML activity diagrams were created to model the system workflows for creating a study listing and viewing a user profile. Thesw diagrams shows user interaction, validation logic, database operations, and system responses. These workflows guide the planned Express.js routes and MySQL queries for Sprint 3 implementation.
+Two UML activity diagrams were created to model the system workflows for creating a study listing and viewing a user profile. These diagrams shows user interaction, validation logic, database operations, and system responses. These workflows guide the planned Express.js routes and MySQL queries for Sprint 3 implementation.
 
 
 ## Activity Diagrams – Create Study Listing
