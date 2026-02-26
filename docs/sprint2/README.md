@@ -28,6 +28,9 @@ Two UML activity diagrams were created to model the system workflows for creatin
 
 ## Erd Diagram for Sprint 2
 
+The database schema includes Users, Listings, and Tags, with User_Tags and Listing_Tags acting as junction tables to support many-to-many relationships. This structure ensures data normalisation and enables efficient retrieval and filtering for Sprint 3 implementation.
+
+
 ![Erd-diagram png](https://github.com/user-attachments/assets/ae654252-ff13-40e3-ae9b-65ec513ffcc7)
 
 
