@@ -114,4 +114,4 @@ The following routes are available in the system:
 ## Agile Workflow
 
 The project was managed using a **GitHub Kanban board** following Agile sprint practices.  
-Tasks were assigned to team members and tracked through **Todo → In Progress → Done** stages to e
+Tasks were assigned to team members and tracked through **Todo → In Progress → Done** stages to ensure collaborative development.
