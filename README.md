@@ -31,3 +31,87 @@ Sprint 1 – Planning, requirement analysis, and documentation
 - Sudip Paudel (A00023144)
 - Susan Thapa (A00023010)
 - Sapana Pandey (A00034818)
+
+## Sprint 3 Implementation
+
+During Sprint 3 we focused on building the backend and connecting the database to the frontend views.
+
+The following features were implemented:
+
+- Express.js backend server
+- MySQL database connection
+- Dynamic routing for users and listings
+- Pug template engine for rendering pages
+- Listings page displaying all study groups
+- Listing detail page showing full information
+- Users page displaying registered users
+- Database queries connecting listings with user data
+
+These features allow the system to dynamically display study groups stored in the database.
+
+---
+
+## Technologies Used
+
+- Node.js
+- Express.js
+- MySQL
+- Pug Template Engine
+- CSS
+- GitHub for version control
+- GitHub Kanban board for Agile task management
+
+---
+
+## How to Run the Project
+
+1. Clone the repository
+
+
+git clone https://github.com/sapana-roehampton/Study-Buddies.git
+
+
+2. Navigate to the backend folder
+
+
+cd Study-Buddies/backend
+
+
+3. Install required dependencies
+
+
+npm install
+
+
+4. Start the server
+
+
+node server.js
+
+
+5. Open the application in your browser
+
+
+http://localhost:3000
+
+
+---
+
+## Example Pages
+
+The following routes are available in the system:
+
+
+/ → Home page
+/users → List of users
+/users/:id → User profile
+/listings → Study listings
+/listings/:id → Listing detail page
+
+
+---
+
+## Agile Workflow
+
+The project was managed using a **GitHub Kanban board** following Agile sprint practices.  
+Tasks were assigned to team members and tracked through **Todo → In Progress → Done** stages to e
