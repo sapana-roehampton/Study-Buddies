@@ -1,0 +1,28 @@
+doctype html
+html
+  head
+    title Study Listings
+  body
+    a(href="/users") Users
+    |  | 
+    a(href="/listings") Listings
+
+    h1 Study Listings
+
+    table(border="1")
+      tr
+        th ID
+        th Title
+        th Description
+        th User
+
+      each listing in listings
+        tr
+          td= listing.id
+          td
+            a(href=`/listings/${listing.id}`)= listing.title
+          td= listing.description
+          td= listing.name
+
+    br
+    a(href="/users") Back to Users

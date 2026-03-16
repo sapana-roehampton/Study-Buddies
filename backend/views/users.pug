@@ -1,0 +1,25 @@
+doctype html
+html
+  head
+    title Users List
+  body
+    a(href="/users") Users
+    |  | 
+    a(href="/listings") Listings
+
+    h1 Study Buddies Users
+
+    table(border="1")
+      tr
+        th ID
+        th Name
+        th Email
+        th Course
+
+      each user in users
+        tr
+          td= user.id
+          td
+            a(href=`/users/${user.id}`)= user.name
+          td= user.email
+          td= user.course
