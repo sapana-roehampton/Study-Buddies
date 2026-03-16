@@ -1,3 +1,5 @@
+// Listings route and database connection implemented by Susan
+
 const express = require("express");
 const db = require("./db");
 
