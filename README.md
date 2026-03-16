@@ -102,11 +102,11 @@ http://localhost:3000
 The following routes are available in the system:
 
 
-/ → Home page
-/users → List of users
-/users/:id → User profile
-/listings → Study listings
-/listings/:id → Listing detail page
+- / → Home page
+- /users → List of users
+- /users/:id → User profile
+- /listings → Study listings
+- /listings/:id → Listing detail page
 
 
 ---
