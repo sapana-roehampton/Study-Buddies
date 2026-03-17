@@ -1,28 +1,7 @@
 body {
   font-family: Arial, sans-serif;
-  margin: 0;
-  background-color: #f4f6f8;
-}
-
-/* NAVBAR */
-.navbar {
-  background-color: #2a6df4;
-  padding: 15px;
-}
-
-.navbar a {
-  color: white;
-  margin-right: 15px;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-.navbar a:hover {
-  text-decoration: underline;
-}
-
-.container {
   margin: 40px;
+  background-color: #f4f6f8;
 }
 
 h1 {
@@ -32,7 +11,18 @@ h1 {
 .listing-card {
   background: white;
   padding: 15px;
+  margin-bottom: 20px;
   border-radius: 8px;
-  margin-bottom: 15px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  box-shadow: 0px 2px 5px rgba(0,0,0,0.1);
+}
+
+.navbar {
+  background: #2a6df4;
+  padding: 10px;
+}
+
+.navbar a {
+  color: white;
+  margin-right: 15px;
+  text-decoration: none;
 }
