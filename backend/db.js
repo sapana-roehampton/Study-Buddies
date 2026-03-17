@@ -13,3 +13,6 @@ const pool = mysql.createPool({
 
 // export pool
 module.exports = pool.promise();
+
+// Logging (added)
+console.log("Database pool initialized");
