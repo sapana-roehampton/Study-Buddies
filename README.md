@@ -67,37 +67,13 @@ This sprint demonstrates full integration between backend logic, database querie
 
 ## How to Run the Project
 
-1. Clone the repository
-
-
-git clone https://github.com/sapana-roehampton/Study-Buddies.git
-
-
-2. Navigate to the backend folder
-
-
-cd Study-Buddies/backend
-
-
-3. Install required dependencies
-
-
-npm install
-
-
-4. Start the server
-
-
-node server.js
-
-
-5. Open the application in your browser
-
-
-http://localhost:3000
-
-
----
+ - Node.js
+- Express.js
+- MySQL
+- Pug Template Engine
+- CSS
+- GitHub for version control
+- GitHub Kanban board for Agile task management
 
 ## Example Pages
 
