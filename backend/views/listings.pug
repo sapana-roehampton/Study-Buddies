@@ -1,28 +1,31 @@
 doctype html
 html
   head
-    title Study Listings
+    title Study Buddies Listings
+    link(rel="stylesheet", href="/style.css")
+
   body
-    a(href="/users") Users
-    |  | 
-    a(href="/listings") Listings
 
-    h1 Study Listings
+    div.navbar
+      a(href="/") Home
+      a(href="/users") Users
+      a(href="/listings") Listings
 
-    table(border="1")
-      tr
-        th ID
-        th Title
-        th Description
-        th User
+    div.container
+
+      h1 Study Buddies Listings
 
       each listing in listings
-        tr
-          td= listing.id
-          td
-            a(href=`/listings/${listing.id}`)= listing.title
-          td= listing.description
-          td= listing.name
+        div.listing-card
 
-    br
-    a(href="/users") Back to Users
+          p
+            strong Title:
+            a(href=`/listings/${listing.id}`) #{listing.title}
+
+          p
+            strong Description:
+            | #{listing.description}
+
+          p
+            strong Created by:
+            | #{listing.name}

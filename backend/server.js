@@ -6,18 +6,21 @@ const db = require("./db");
 const app = express();
 const PORT = 3000;
 
-// set pug template engine
+/* serve static files (for CSS) */
+app.use(express.static("public"));
+
+/* set pug template engine */
 app.set("view engine", "pug");
 app.set("views", "./views");
 
 
-// HOME PAGE
+/* HOME PAGE */
 app.get("/", (req, res) => {
-  res.send("Study Buddies Server Running");
+  res.redirect("/listings");
 });
 
 
-// USERS LIST PAGE
+/* USERS LIST PAGE */
 app.get("/users", async (req, res) => {
   try {
     const [rows] = await db.query("SELECT * FROM users");
@@ -29,9 +32,10 @@ app.get("/users", async (req, res) => {
 });
 
 
-// USER PROFILE PAGE
+/* USER PROFILE PAGE */
 app.get("/users/:id", async (req, res) => {
   try {
+
     const userId = req.params.id;
 
     const [rows] = await db.query(
@@ -48,7 +52,7 @@ app.get("/users/:id", async (req, res) => {
 });
 
 
-// LISTINGS PAGE
+/* LISTINGS PAGE */
 app.get("/listings", async (req, res) => {
   try {
 
@@ -67,7 +71,29 @@ app.get("/listings", async (req, res) => {
 });
 
 
-// START SERVER
+/* LISTING DETAIL PAGE */
+app.get("/listings/:id", async (req, res) => {
+  try {
+
+    const listingId = req.params.id;
+
+    const [rows] = await db.query(`
+      SELECT listings.id, listings.title, listings.description, users.name
+      FROM listings
+      JOIN users ON listings.user_id = users.id
+      WHERE listings.id = ?
+    `, [listingId]);
+
+    res.render("listing", { listing: rows[0] });
+
+  } catch (error) {
+    console.error(error);
+    res.send("Error loading listing");
+  }
+});
+
+
+/* START SERVER */
 app.listen(PORT, () => {
   console.log(`Server running at http://localhost:${PORT}`);
 });

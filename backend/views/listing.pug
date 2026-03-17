@@ -1,0 +1,36 @@
+doctype html
+html
+  head
+    title Listing Detail
+    link(rel="stylesheet", href="/style.css")
+
+  body
+
+    div.navbar
+      a(href="/") Home
+      a(href="/users") Users
+      a(href="/listings") Listings
+
+    div.container
+
+      h1 Listing Detail
+
+      div.listing-card
+        p
+          strong Title:
+          | #{listing.title}
+
+        p
+          strong Description:
+          | #{listing.description}
+
+        p
+          strong Created by:
+          | #{listing.name}
+
+        p
+          strong Category:
+          | Study Group  
+
+      br
+      a(href="/listings") ← Back to Listings
