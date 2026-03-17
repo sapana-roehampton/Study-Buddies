@@ -49,6 +49,8 @@ The following features were implemented:
 
 These features allow the system to dynamically display study groups stored in the database.
 
+This sprint demonstrates full integration between backend logic, database queries, and dynamic user interface rendering.
+
 ---
 
 ## Technologies Used
