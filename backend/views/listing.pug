@@ -6,31 +6,23 @@ html
 
   body
 
-    div.navbar
-      a(href="/") Home
-      a(href="/users") Users
-      a(href="/listings") Listings
+    h1 Listing Detail
 
-    div.container
+    div
+      h2 #{listing.title}
 
-      h1 Listing Detail
+      p
+        strong Description:
+        | #{listing.description}
 
-      div.listing-card
-        p
-          strong Title:
-          | #{listing.title}
+      p
+        strong Created by:
+        | #{listing.name}
 
-        p
-          strong Description:
-          | #{listing.description}
+      p
+        strong Category:
+        | Study Group
 
-        p
-          strong Created by:
-          | #{listing.name}
+    br
 
-        p
-          strong Category:
-          | Study Group  
-
-      br
-      a(href="/listings") ← Back to Listings
+    a(href="/listings") ← Back to Listings
