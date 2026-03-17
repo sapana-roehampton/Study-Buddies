@@ -84,7 +84,11 @@ app.get("/listings/:id", async (req, res) => {
       WHERE listings.id = ?
     `, [listingId]);
 
-    res.render("listing", { listing: rows[0] });
+    res.render("listings",{
+      listings: rows,
+        totallistings: rows.length
+      
+    } );
 
   } catch (error) {
     console.error(error);
