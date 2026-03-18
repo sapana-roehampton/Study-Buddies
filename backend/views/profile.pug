@@ -2,24 +2,31 @@ doctype html
 html
   head
     title User Profile
+    link(rel="stylesheet", href="/style.css")
+
   body
-    a(href="/users") Users
-    |  | 
-    a(href="/listings") Listings
 
-    h1 User Profile
+    div.navbar
+      a(href="/") Home
+      a(href="/users") Users
+      a(href="/listings") Listings
 
-    p
-      strong Name:
-      |  #{user.name}
+    div.container
 
-    p
-      strong Email:
-      |  #{user.email}
+      h1 User Profile
 
-    p
-      strong Course:
-      |  #{user.course}
+      div.listing-card
+        p
+          strong Name:
+          | #{user.name}
 
-    br
-    a(href="/users") Back to Users
+        p
+          strong Email:
+          | #{user.email}
+
+        p
+          strong Course:
+          | #{user.course}
+
+      br
+      a(href="/users") ← Back to Users
