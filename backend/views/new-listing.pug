@@ -1,0 +1,30 @@
+extends layout
+
+block content
+
+  h1 Create New Listing
+
+  form(action="/listings" method="POST")
+    
+    p
+      label Title:
+      br
+      input(type="text" name="title" required)
+
+    p
+      label Description:
+      br
+      textarea(name="description" required)
+
+    p
+      label Category:
+      br
+      input(type="text" name="category" required)
+
+    p
+      label User ID:
+      br
+      input(type="number" name="user_id" required)
+
+    br
+    button(type="submit") Create Listing

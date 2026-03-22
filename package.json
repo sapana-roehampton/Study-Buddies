@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "pug-layout": "^1.2.3"
+  }
+}

@@ -6,12 +6,14 @@ const db = require("./db");
 const app = express();
 const PORT = 3000;
 
+app.use(express.urlencoded({ extended: true }));
+
 /* serve static files (for CSS) */
-app.use(express.static("public"));
+app.use(express.static("backend/public"));
 
 /* set pug template engine */
 app.set("view engine", "pug");
-app.set("views", "./views");
+app.set("views", "./backend/views");
 
 
 /* HOME PAGE */
@@ -57,7 +59,7 @@ app.get("/listings", async (req, res) => {
   try {
 
     const [rows] = await db.query(`
-      SELECT listings.id, listings.title, listings.description, users.name
+      SELECT listings.id, listings.title, listings.description, listings.category, users.name
       FROM listings
       JOIN users ON listings.user_id = users.id
     `);
@@ -70,6 +72,11 @@ app.get("/listings", async (req, res) => {
   }
 });
 
+/* NEW LISTING PAGE */
+app.get("/listings/new", (req, res) => {
+  res.render("new-listing");
+});
+
 
 /* LISTING DETAIL PAGE */
 app.get("/listings/:id", async (req, res) => {
@@ -78,17 +85,13 @@ app.get("/listings/:id", async (req, res) => {
     const listingId = req.params.id;
 
     const [rows] = await db.query(`
-      SELECT listings.id, listings.title, listings.description, users.name
+      SELECT listings.id, listings.title, listings.description, listings.category, users.name
       FROM listings
       JOIN users ON listings.user_id = users.id
       WHERE listings.id = ?
     `, [listingId]);
 
-    res.render("listings",{
-      listings: rows,
-        totallistings: rows.length
-      
-    } );
+    res.render("listing", { listing: rows[0] });
 
   } catch (error) {
     console.error(error);
@@ -96,6 +99,74 @@ app.get("/listings/:id", async (req, res) => {
   }
 });
 
+/* CREATE LISTING (FORM SUBMIT) */
+app.post("/listings", async (req, res) => {
+  try {
+    const { title, description, category, user_id } = req.body;
+
+    await db.query(
+      "INSERT INTO listings (title, description, category, user_id) VALUES (?, ?, ?, ?)",
+      [title, description, category, user_id]
+    );
+
+    res.redirect("/listings");
+
+  } catch (error) {
+    console.error(error);
+    res.send("Error creating listing");
+  }
+});
+
+app.post("/listings/:id/delete", async (req, res) => {
+  try {
+    const listingId = req.params.id;
+
+    await db.query("DELETE FROM listings WHERE id = ?", [listingId]);
+
+    res.redirect("/listings");
+
+  } catch (error) {
+    console.error(error);
+    res.send("Error deleting listing");
+  }
+});
+
+/* SHOW EDIT PAGE */
+app.get("/listings/:id/edit", async (req, res) => {
+  try {
+    const listingId = req.params.id;
+
+    const [rows] = await db.query(
+      "SELECT * FROM listings WHERE id = ?",
+      [listingId]
+    );
+
+    res.render("edit-listing", { listing: rows[0] });
+
+  } catch (error) {
+    console.error(error);
+    res.send("Error loading edit page");
+  }
+});
+
+/* UPDATE LISTING */
+app.post("/listings/:id/edit", async (req, res) => {
+  try {
+    const listingId = req.params.id;
+    const { title, description, category } = req.body;
+
+    await db.query(
+      "UPDATE listings SET title = ?, description = ?, category = ? WHERE id = ?",
+      [title, description, category, listingId]
+    );
+
+    res.redirect("/listings");
+
+  } catch (error) {
+    console.error(error);
+    res.send("Error updating listing");
+  }
+});
 
 /* START SERVER */
 app.listen(PORT, () => {
