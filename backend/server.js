@@ -11,7 +11,7 @@ app.use(express.static("public"));
 
 /* set pug template engine */
 app.set("view engine", "pug");
-app.set("views", "./views");
+app.set("views", "./backend/views");
 
 
 /* HOME PAGE */
@@ -57,7 +57,7 @@ app.get("/listings", async (req, res) => {
   try {
 
     const [rows] = await db.query(`
-      SELECT listings.id, listings.title, listings.description, users.name
+      SELECT listings.id, listings.title, listings.description, listings.category, users.name
       FROM listings
       JOIN users ON listings.user_id = users.id
     `);
@@ -78,17 +78,13 @@ app.get("/listings/:id", async (req, res) => {
     const listingId = req.params.id;
 
     const [rows] = await db.query(`
-      SELECT listings.id, listings.title, listings.description, users.name
+      SELECT listings.id, listings.title, listings.description, listings.category, users.name
       FROM listings
       JOIN users ON listings.user_id = users.id
       WHERE listings.id = ?
     `, [listingId]);
 
-    res.render("listings",{
-      listings: rows,
-        totallistings: rows.length
-      
-    } );
+    res.render("listing", { listing: rows[0] });
 
   } catch (error) {
     console.error(error);
