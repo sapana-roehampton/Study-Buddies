@@ -1,0 +1,18 @@
+extends layout
+
+block content
+  h1 Edit Listing
+
+  form(action=`/listings/${listing.id}/edit`, method="POST")
+
+    p Title:
+    input(type="text", name="title", value=listing.title)
+
+    p Description:
+    textarea(name="description") #{listing.description}
+
+    p Category:
+    input(type="text", name="category", value=listing.category)
+
+    br
+    button(type="submit") Update Listing

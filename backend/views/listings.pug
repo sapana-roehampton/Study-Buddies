@@ -1,17 +1,6 @@
-doctype html
-html
-  head
-    title Study Buddies Listings
-    link(rel="stylesheet", href="/style.css")
+extends layout
 
-  body
-
-    div.navbar
-      a(href="/") Home
-      a(href="/users") Users
-      a(href="/listings") Listings
-
-    div.container
+block content
 
       h1 Study Buddies Listings
 
@@ -33,3 +22,9 @@ html
           p
             strong Category:
             | #{listing.category}
+
+          p
+            a(href=`/listings/${listing.id}/edit`) Edit
+
+          form(action=`/listings/${listing.id}/delete`, method="POST")
+            button(type="submit") Delete
