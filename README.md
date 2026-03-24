@@ -36,7 +36,7 @@ Sprint 1 – Planning, requirement analysis, and documentation
 
 During Sprint 3 we focused on building the backend and connecting the database to the frontend views.
 
-The following features were implemented:
+The following features were implemented for these:
 
 - Express.js backend server
 - MySQL database connection
