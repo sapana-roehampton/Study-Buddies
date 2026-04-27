@@ -45,7 +45,11 @@ app.get("/users/:id", async (req, res) => {
       [userId]
     );
 
-    res.render("profile", { user: rows[0] });
+    if (rows.length === 0) {
+  return res.status(404).send("User not found");
+}
+
+  res.render("profile", { user: rows[0] });
 
   } catch (error) {
     console.error(error);
@@ -91,7 +95,11 @@ app.get("/listings/:id", async (req, res) => {
       WHERE listings.id = ?
     `, [listingId]);
 
-    res.render("listing", { listing: rows[0] });
+    if (rows.length === 0) {
+  return res.status(404).send("Listing not found");
+}
+
+  res.render("listing", { listing: rows[0] });
 
   } catch (error) {
     console.error(error);
@@ -104,9 +112,29 @@ app.post("/listings", async (req, res) => {
   try {
     const { title, description, category, user_id } = req.body;
 
+    // VALIDATION
+    if (!title || !description || !category || !user_id) {
+      return res.status(400).send("All fields are required");
+    }
+
+    if (title.trim().length < 3) {
+      return res.status(400).send("Title must be at least 3 characters");
+    }
+
+    // CHECK USER EXISTS
+    const [userCheck] = await db.query(
+      "SELECT id FROM users WHERE id = ?",
+      [user_id]
+    );
+
+    if (userCheck.length === 0) {
+      return res.status(400).send("Invalid user selected");
+    }
+
+    // INSERT SAFE DATA
     await db.query(
       "INSERT INTO listings (title, description, category, user_id) VALUES (?, ?, ?, ?)",
-      [title, description, category, user_id]
+      [title.trim(), description.trim(), category, user_id]
     );
 
     res.redirect("/listings");
@@ -140,6 +168,9 @@ app.get("/listings/:id/edit", async (req, res) => {
       "SELECT * FROM listings WHERE id = ?",
       [listingId]
     );
+    if (rows.length === 0) {
+  return res.status(404).send("Listing not found");
+  }  
 
     res.render("edit-listing", { listing: rows[0] });
 
