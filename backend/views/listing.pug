@@ -1,31 +1,24 @@
 extends layout
 
 block content
+  section.hero
+    div.hero-text
+      p.badge Listing Details
+      h1 #{listing.title}
+      p #{listing.category}
 
-    h1 Listing Detail
+  div.study-card.profile-card
+    span.category-badge #{listing.category}
 
-    div
-      h2 #{listing.title}
+    h2 #{listing.title}
 
-      p
-        strong Description:
-        | #{listing.description}
+    p.description #{listing.description}
 
+    div.card-footer
       p
         strong Created by:
-        | #{listing.name}
+        |  #{listing.name}
 
-      p
-        strong Category:
-        | #{listing.category}
-
-      hr
-
-      p
-        strong Want to join this study group?
-        |  Contact the creator for more details 
-      
-
-    br
-
-    a(href="/listings") ← Back to Listings
+      div.actions
+        a.edit-btn(href=`/listings/${listing.id}/edit`) Edit Listing
+        a.cta-button(href="/listings") ← Back to Listings

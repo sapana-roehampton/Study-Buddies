@@ -1,30 +1,24 @@
 extends layout
 
 block content
+  section.hero
+    div.hero-text
+      p.badge Create Study Group
+      h1 Start a new study listing
+      p Add a study topic, choose a category, and help students find support.
 
-  h1 Create New Listing
+  div.study-card.form-card
+    form(action="/listings", method="POST")
+      label Title
+      input(type="text", name="title", placeholder="e.g. JavaScript Revision Group", required)
 
-  form(action="/listings" method="POST")
-    
-    p
-      label Title:
-      br
-      input(type="text" name="title" required)
+      label Description
+      textarea(name="description", rows="5", placeholder="Describe what you need help with...", required)
 
-    p
-      label Description:
-      br
-      textarea(name="description" required)
+      label Category
+      input(type="text", name="category", placeholder="e.g. Web Development", required)
 
-    p
-      label Category:
-      br
-      input(type="text" name="category" required)
+      label User ID
+      input(type="number", name="user_id", placeholder="Enter your user ID", required)
 
-    p
-      label User ID:
-      br
-      input(type="number" name="user_id" required)
-
-    br
-    button(type="submit") Create Listing
+      button(type="submit") Create Listing

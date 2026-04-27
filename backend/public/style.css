@@ -1,35 +1,214 @@
 body {
   font-family: Arial, sans-serif;
-  margin: 40px;
-  background-color: #f4f6f8;
-  max-width: 800px;
-}
-
-h1 {
-  color: #333;
-}
-
-.listing-card {
-  background: white;
-  padding: 15px;
-  margin-bottom: 20px;
-  border-radius: 8px;
-  box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
-}
-
-.listing-card:hover {
-  transform: scale(1.01);
-  transition: 0.2s;
+  margin: 0;
+  background: #f4f7fb;
+  color: #222;
 }
 
 .navbar {
-  background: #2a6df4;
-  padding: 15px;
+  background: linear-gradient(135deg, #2563eb, #7c3aed);
+  padding: 18px 40px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
 }
 
 .navbar a {
   color: white;
-  margin-right: 20px;
+  margin-right: 26px;
   text-decoration: none;
+  font-weight: bold;
+}
+
+.navbar a:hover {
+  text-decoration: underline;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 30px auto;
+  padding: 0 22px;
+}
+
+h1,
+h2 {
+  color: #1f2937;
+}
+
+/* HERO SECTION */
+.hero {
+  background: linear-gradient(135deg, #2563eb, #7c3aed);
+  color: white;
+  padding: 50px;
+  border-radius: 24px;
+  margin-bottom: 35px;
+  box-shadow: 0 12px 30px rgba(37, 99, 235, 0.25);
+}
+
+.hero h1 {
+  color: white;
+  font-size: 44px;
+  margin: 10px 0;
+}
+
+.hero p {
+  font-size: 18px;
+  max-width: 650px;
+}
+
+.badge {
   display: inline-block;
+  background: rgba(255, 255, 255, 0.22);
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-weight: bold;
+}
+
+.cta-button {
+  display: inline-block;
+  margin-top: 20px;
+  background: white;
+  color: #2563eb;
+  padding: 13px 22px;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* PAGE TITLES */
+.section-title {
+  margin: 30px 0 20px;
+  font-size: 30px;
+}
+
+/* LISTINGS GRID */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 22px;
+}
+
+.study-card {
+  background: white;
+  border-radius: 22px;
+  padding: 24px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+  border: 1px solid #e5e7eb;
+}
+
+.study-card:hover {
+  transform: translateY(-5px);
+  transition: 0.2s;
+}
+
+.study-card h3 {
+  font-size: 22px;
+  margin: 15px 0 10px;
+}
+
+.study-card h3 a {
+  text-decoration: none;
+  color: #111827;
+}
+
+.description {
+  color: #4b5563;
+  min-height: 50px;
+}
+
+.category-badge {
+  background: #dbeafe;
+  color: #1d4ed8;
+  padding: 7px 12px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.card-footer {
+  margin-top: 20px;
+  border-top: 1px solid #e5e7eb;
+  padding-top: 15px;
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.edit-btn {
+  background: #10b981;
+  color: white;
+  padding: 8px 14px;
+  border-radius: 8px;
+  text-decoration: none;
+}
+
+.delete-btn,
+button {
+  background: #ef4444;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.delete-btn:hover,
+button:hover {
+  background: #dc2626;
+}
+
+/* OLD CARD SUPPORT */
+.listing-card {
+  background: white;
+  padding: 22px;
+  margin-bottom: 24px;
+  border-radius: 16px;
+  box-shadow: 0 8px 22px rgba(0,0,0,0.08);
+}
+
+.listing-card p {
+  margin: 10px 0;
+  line-height: 1.5;
+}
+
+strong {
+  color: #111827;
+  margin-right: 5px;
+}
+
+a {
+  color: #2563eb;
+  font-weight: 600;
+}
+
+/* FORMS */
+form {
+  margin-top: 15px;
+}
+
+input,
+textarea,
+select {
+  width: 100%;
+  padding: 11px;
+  margin: 8px 0 16px 0;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  font-size: 15px;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  border-color: #2563eb;
+}
+
+/* INTRO BOX */
+.page-intro {
+  background: #e0ecff;
+  padding: 18px;
+  border-radius: 12px;
+  margin-bottom: 25px;
 }

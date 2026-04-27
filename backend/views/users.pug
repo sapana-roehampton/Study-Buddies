@@ -1,21 +1,27 @@
 extends layout
 
 block content
+  section.hero.users-hero
+    div.hero-text
+      p.badge Study Community
+      h1 Meet your Study Buddies
+      p Browse students, view their profiles, and find classmates who share your course interests.
 
-      h1 Study Buddies Users
+  h2.section-title Student Members
 
-      p Total Users: #{users.length}
+  div.card-grid
+    each user in users
+      div.study-card.user-card
+        div.avatar-circle #{user.name.charAt(0)}
 
-      each user in users
-        div.listing-card
-          p
-            strong Name:
-            a(href=`/users/${user.id}`) #{user.name}
+        h3
+          a(href=`/users/${user.id}`) #{user.name}
 
+        p.description #{user.course}
+
+        div.card-footer
           p
             strong Email:
-            | #{user.email}
+            |  #{user.email}
 
-          p
-            strong Course:
-            | #{user.course}
+          a.edit-btn(href=`/users/${user.id}`) View Profile

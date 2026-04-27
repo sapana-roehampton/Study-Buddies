@@ -1,21 +1,23 @@
 extends layout
 
 block content
+  section.hero.users-hero
+    div.hero-text
+      p.badge Student Profile
+      h1 #{user.name}
+      p #{user.course}
 
-      h1 User Profile
+  div.study-card.profile-card
+    div.avatar-circle.large #{user.name.charAt(0)}
 
-      div.listing-card
-        p
-          strong Name:
-          | #{user.name}
+    h2 #{user.name}
 
-        p
-          strong Email:
-          | #{user.email}
+    p
+      strong Email:
+      |  #{user.email}
 
-        p
-          strong Course:
-          | #{user.course}
+    p
+      strong Course:
+      |  #{user.course}
 
-      br
-      a(href="/users") ← Back to Users
+    a.cta-button(href="/users") ← Back to Users

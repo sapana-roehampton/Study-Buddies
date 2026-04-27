@@ -1,30 +1,33 @@
 extends layout
 
 block content
+  section.hero
+    div.hero-text
+      p.badge Study Buddies App
+      h1 Find students to study with
+      p Connect with classmates, join study groups, and get help with coursework.
+      a.cta-button(href="/listings/new") + Create New Listing
 
-      h1 Study Buddies Listings
+  h2.section-title Available Study Groups
 
-      each listing in listings
-        div.listing-card
+  div.card-grid
+    each listing in listings
+      div.study-card
 
+        span.category-badge #{listing.category}
+
+        h3
+          a(href=`/listings/${listing.id}`) #{listing.title}
+
+        p.description #{listing.description}
+
+        div.card-footer
           p
-            strong Title:
-            a(href=`/listings/${listing.id}`) #{listing.title}
+            strong Posted by:
+            |  #{listing.name}
 
-          p
-            strong Description:
-            | #{listing.description}
+          div.actions
+            a.edit-btn(href=`/listings/${listing.id}/edit`) Edit
 
-          p
-            strong Created by:
-            | #{listing.name}
-
-          p
-            strong Category:
-            | #{listing.category}
-
-          p
-            a(href=`/listings/${listing.id}/edit`) Edit
-
-          form(action=`/listings/${listing.id}/delete`, method="POST")
-            button(type="submit") Delete
+            form(action=`/listings/${listing.id}/delete`, method="POST")
+              button.delete-btn(type="submit") Delete
