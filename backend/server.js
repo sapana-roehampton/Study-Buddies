@@ -186,12 +186,33 @@ app.post("/listings/:id/edit", async (req, res) => {
     const listingId = req.params.id;
     const { title, description, category } = req.body;
 
-    await db.query(
-      "UPDATE listings SET title = ?, description = ?, category = ? WHERE id = ?",
-      [title, description, category, listingId]
+    // CHECK LISTING EXISTS
+    const [existing] = await db.query(
+      "SELECT id FROM listings WHERE id = ?",
+      [listingId]
     );
 
-    res.redirect("/listings");
+    if (existing.length === 0) {
+      return res.status(404).send("Listing not found");
+    }
+
+    // VALIDATION
+    if (!title || !description || !category) {
+      return res.status(400).send("All fields are required");
+    }
+
+    if (title.trim().length < 3) {
+      return res.status(400).send("Title must be at least 3 characters");
+    }
+
+    // UPDATE SAFE DATA
+    await db.query(
+      "UPDATE listings SET title = ?, description = ?, category = ? WHERE id = ?",
+      [title.trim(), description.trim(), category, listingId]
+    );
+
+    // BETTER REDIRECT
+    res.redirect(`/listings/${listingId}`);
 
   } catch (error) {
     console.error(error);
