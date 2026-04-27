@@ -10,5 +10,11 @@ html
       a(href="/users") Users
       a(href="/listings/new") New Listing
 
+    if loggedInUser
+      a(href=`/users/${loggedInUser.id}`) #{loggedInUser.name}
+      a(href="/logout") Logout
+    else
+      a(href="/login") Login
+
     .container
       block content

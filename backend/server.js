@@ -1,5 +1,6 @@
 // Listings route and database connection implemented by Susan
 
+const session = require("express-session");
 const express = require("express");
 const db = require("./db");
 
@@ -7,6 +8,16 @@ const app = express();
 const PORT = 3000;
 
 app.use(express.urlencoded({ extended: true }));
+app.use(session({
+secret: "studybuddy-secret",
+resave: false,
+saveUninitialized: true
+}));
+
+app.use((req, res, next) => {
+res.locals.loggedInUser = req.session.user;
+next();
+});
 
 /* serve static files (for CSS) */
 app.use(express.static("backend/public"));
@@ -15,6 +26,43 @@ app.use(express.static("backend/public"));
 app.set("view engine", "pug");
 app.set("views", "./backend/views");
 
+app.get("/login", (req, res) => {
+res.render("login", { error: null });
+});
+
+app.post("/login", async (req, res) => {
+try {
+const { email } = req.body;
+
+
+if (!email) {
+  return res.render("login", { error: "Email required" });
+}
+
+const [rows] = await db.query(
+  "SELECT * FROM users WHERE email = ?",
+  [email]
+);
+
+if (rows.length === 0) {
+  return res.render("login", { error: "User not found" });
+}
+
+req.session.user = rows[0];
+res.redirect("/listings");
+
+
+} catch (error) {
+console.error(error);
+res.send("Login error");
+}
+});
+
+app.get("/logout", (req, res) => {
+req.session.destroy(() => {
+res.redirect("/listings");
+});
+});
 
 /* HOME PAGE */
 app.get("/", (req, res) => {

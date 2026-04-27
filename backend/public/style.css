@@ -212,3 +212,11 @@ select:focus {
   border-radius: 12px;
   margin-bottom: 25px;
 }
+
+.error-message {
+background: #fee2e2;
+color: #991b1b;
+padding: 10px;
+border-radius: 8px;
+margin-bottom: 10px;
+}

@@ -1,0 +1,21 @@
+// Adding basic login system
+
+extends layout
+
+block content
+  section.hero
+    div.hero-text
+      p.badge Login
+      h1 Welcome back
+      p Log in using your email
+
+  div.study-card.form-card
+    if error
+      p.error-message #{error}
+
+
+    form(action="/login", method="POST")
+      label Email
+      input(type="email", name="email", required)
+
+      button(type="submit") Login
