@@ -220,3 +220,19 @@ padding: 10px;
 border-radius: 8px;
 margin-bottom: 10px;
 }
+
+.user-photo {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 15px;
+}
+
+.profile-photo {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 20px;
+}

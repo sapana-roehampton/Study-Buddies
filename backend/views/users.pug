@@ -12,7 +12,7 @@ block content
   div.card-grid
     each user in users
       div.study-card.user-card
-        div.avatar-circle #{user.name.charAt(0)}
+        img.user-photo(src=`/images/user${user.id}.png`, alt=user.name)
 
         h3
           a(href=`/users/${user.id}`) #{user.name}
