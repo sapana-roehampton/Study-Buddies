@@ -32,7 +32,7 @@ res.render("login", { error: null });
 
 app.post("/login", async (req, res) => {
 try {
-const { email } = req.body;
+const { email, password } = req.body;
 
 
 if (!email) {
@@ -44,8 +44,8 @@ const [rows] = await db.query(
   [email]
 );
 
-if (rows.length === 0) {
-  return res.render("login", { error: "User not found" });
+if (rows.length === 0 || password !== "1234") {
+  return res.render("login", { error: "Invalid email or password" });
 }
 
 req.session.user = rows[0];

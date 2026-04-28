@@ -12,8 +12,11 @@ block content
       p.error-message #{error}
 
 
-    form(action="/login", method="POST")
-      label Email
-      input(type="email", name="email", required)
+  form(action="/login", method="POST")
+    label Email
+    input(type="email", name="email", required)
 
-      button(type="submit") Login
+    label Password
+    input(type="password", name="password", required)
+
+    button(type="submit") Login
