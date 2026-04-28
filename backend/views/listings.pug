@@ -3,10 +3,14 @@ extends layout
 block content
   section.hero
     div.hero-text
-      p.badge Study Buddies App
-      h1 Find students to study with
-      p Connect with classmates, join study groups, and get help with coursework.
-      a.cta-button(href="/listings/new") + Create New Listing
+    p.badge Study Buddies App
+    h1 Find students to study with
+    p Connect with classmates, join study groups, and get help with coursework.
+    a.cta-button(href="/listings/new") + Create New Listing
+
+  form.search-form(action="/listings", method="GET")
+    input(type="text", name="search", placeholder="Search study groups...", value=search)
+    button(type="submit") Search
 
   h2.section-title Available Study Groups
 

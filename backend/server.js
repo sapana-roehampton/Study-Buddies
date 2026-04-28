@@ -109,14 +109,23 @@ app.get("/users/:id", async (req, res) => {
 /* LISTINGS PAGE */
 app.get("/listings", async (req, res) => {
   try {
+    const { search } = req.query;
 
-    const [rows] = await db.query(`
+    let query = `
       SELECT listings.id, listings.title, listings.description, listings.category, users.name
       FROM listings
       JOIN users ON listings.user_id = users.id
-    `);
+    `;
 
-    res.render("listings", { listings: rows });
+    if (search) {
+      query += " WHERE listings.title LIKE ? OR listings.category LIKE ?";
+    }
+
+    const [rows] = search
+      ? await db.query(query, [`%${search}%`, `%${search}%`])
+      : await db.query(query);
+
+    res.render("listings", { listings: rows, search });
 
   } catch (error) {
     console.error(error);
