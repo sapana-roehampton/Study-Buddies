@@ -126,9 +126,11 @@ app.get("/listings", async (req, res) => {
 
 /* NEW LISTING PAGE */
 app.get("/listings/new", (req, res) => {
+  if (!req.session.user) {
+    return res.redirect("/login");
+  }
   res.render("new-listing");
 });
-
 
 /* LISTING DETAIL PAGE */
 app.get("/listings/:id", async (req, res) => {
@@ -157,6 +159,10 @@ app.get("/listings/:id", async (req, res) => {
 
 /* CREATE LISTING (FORM SUBMIT) */
 app.post("/listings", async (req, res) => {
+  if (!req.session.user) {
+    return res.redirect("/login");
+  }
+
   try {
     const { title, description, category, user_id } = req.body;
 
@@ -193,7 +199,13 @@ app.post("/listings", async (req, res) => {
   }
 });
 
+/* Delete Route */
+
 app.post("/listings/:id/delete", async (req, res) => {
+  if (!req.session.user) {
+    return res.redirect("/login");
+}
+
   try {
     const listingId = req.params.id;
 
