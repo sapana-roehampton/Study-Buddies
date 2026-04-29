@@ -22,3 +22,13 @@ block content
       div.actions
         a.edit-btn(href=`/listings/${listing.id}/edit`) Edit Listing
         a.cta-button(href="/listings") ← Back to Listings
+
+    if related && related.length
+      h2.section-title Related Study Groups
+      div.card-grid
+        each item in related
+          div.study-card
+            span.category-badge #{item.category}
+            h3
+              a(href=`/listings/${item.id}`) #{item.title}
+            p.description #{item.description}

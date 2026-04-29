@@ -158,7 +158,12 @@ app.get("/listings/:id", async (req, res) => {
   return res.status(404).send("Listing not found");
 }
 
-  res.render("listing", { listing: rows[0] });
+  const [related] = await db.query(
+  "SELECT * FROM listings WHERE category = ? AND id != ? LIMIT 3",
+  [rows[0].category, listingId]
+);
+
+  res.render("listing", { listing: rows[0], related });
 
   } catch (error) {
     console.error(error);
