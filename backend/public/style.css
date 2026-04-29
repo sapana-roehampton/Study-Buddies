@@ -236,3 +236,35 @@ margin-bottom: 10px;
   object-fit: cover;
   margin-bottom: 20px;
 }
+.message-form {
+  margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.message-form textarea {
+  min-height: 90px;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #d1d5db;
+  resize: vertical;
+}
+
+.message-form button {
+  width: fit-content;
+  background: #2563eb;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.message-box {
+  margin-top: 15px;
+  padding: 14px;
+  border-radius: 12px;
+  background: #f8fafc;
+  border: 1px solid #e5e7eb;
+}

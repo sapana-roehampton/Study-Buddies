@@ -168,11 +168,21 @@ app.get("/listings/:id", async (req, res) => {
   [listingId]
 );
 
+const [messages] = await db.query(
+  `SELECT messages.content, messages.created_at, users.name
+   FROM messages
+   JOIN users ON messages.sender_id = users.id
+   WHERE messages.listing_id = ?
+   ORDER BY messages.created_at DESC`,
+  [listingId]
+);
+
 res.render("listing", {
   listing: rows[0],
   related,
   averageRating: ratingRows[0].averageRating || 0,
-  ratingCount: ratingRows[0].ratingCount || 0
+  ratingCount: ratingRows[0].ratingCount || 0,
+  messages
 });
 
   } catch (error) {
@@ -329,6 +339,34 @@ app.post("/listings/:id/rate", async (req, res) => {
   } catch (error) {
     console.error(error);
     res.send("Error adding rating");
+  }
+});
+
+/* SEND MESSAGE */
+app.post("/listings/:id/messages", async (req, res) => {
+  try {
+    if (!req.session.user) {
+      return res.redirect("/login");
+    }
+
+    const listingId = req.params.id;
+    const senderId = req.session.user.id;
+    const { content } = req.body;
+
+    if (!content || content.trim().length < 2) {
+      return res.status(400).send("Message must be at least 2 characters");
+    }
+
+    await db.query(
+      "INSERT INTO messages (listing_id, sender_id, content) VALUES (?, ?, ?)",
+      [listingId, senderId, content.trim()]
+    );
+
+    res.redirect(`/listings/${listingId}`);
+
+  } catch (error) {
+    console.error(error);
+    res.send("Error sending message");
   }
 });
 

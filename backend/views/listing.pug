@@ -13,7 +13,7 @@ block content
     h2 #{listing.title}
 
     p.description #{listing.description}
-    
+
     if ratingCount > 0
       p.rating-text #{Number(averageRating).toFixed(1)} / 5 (#{ratingCount} ratings)
     else
@@ -42,6 +42,28 @@ block content
       div.actions
         a.edit-btn(href=`/listings/${listing.id}/edit`) Edit Listing
         a.cta-button(href="/listings") ← Back to Listings
+        
+    div.study-card
+    h2.section-title Messages
+
+    if loggedInUser
+      form.message-form(action=`/listings/${listing.id}/messages`, method="POST")
+        label Send a message about this listing
+        textarea(name="content", placeholder="Write your message...", required)
+        button(type="submit") Send Message
+    else
+      p
+        a(href="/login") Login to send a message
+
+    if messages && messages.length
+      each message in messages
+        div.message-box
+          p
+            strong #{message.name}
+            |  said:
+          p #{message.content}
+    else
+      p No messages yet
 
     if related && related.length
       h2.section-title Related Study Groups
