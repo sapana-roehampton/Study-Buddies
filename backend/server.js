@@ -163,7 +163,17 @@ app.get("/listings/:id", async (req, res) => {
   [rows[0].category, listingId]
 );
 
-  res.render("listing", { listing: rows[0], related });
+  const [ratingRows] = await db.query(
+  "SELECT AVG(rating) AS averageRating, COUNT(*) AS ratingCount FROM ratings WHERE listing_id = ?",
+  [listingId]
+);
+
+res.render("listing", {
+  listing: rows[0],
+  related,
+  averageRating: ratingRows[0].averageRating || 0,
+  ratingCount: ratingRows[0].ratingCount || 0
+});
 
   } catch (error) {
     console.error(error);
@@ -291,6 +301,34 @@ app.post("/listings/:id/edit", async (req, res) => {
   } catch (error) {
     console.error(error);
     res.send("Error updating listing");
+  }
+});
+
+/* ADD RATING */
+app.post("/listings/:id/rate", async (req, res) => {
+  try {
+    if (!req.session.user) {
+      return res.redirect("/login");
+    }
+
+    const listingId = req.params.id;
+    const userId = req.session.user.id;
+    const { rating } = req.body;
+
+    if (!rating || rating < 1 || rating > 5) {
+      return res.status(400).send("Invalid rating");
+    }
+
+    await db.query(
+      "INSERT INTO ratings (listing_id, user_id, rating) VALUES (?, ?, ?)",
+      [listingId, userId, rating]
+    );
+
+    res.redirect(`/listings/${listingId}`);
+
+  } catch (error) {
+    console.error(error);
+    res.send("Error adding rating");
   }
 });
 

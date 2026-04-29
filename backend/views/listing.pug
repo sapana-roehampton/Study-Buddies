@@ -13,6 +13,26 @@ block content
     h2 #{listing.title}
 
     p.description #{listing.description}
+    
+    if ratingCount > 0
+      p.rating-text #{Number(averageRating).toFixed(1)} / 5 (#{ratingCount} ratings)
+    else
+      p.rating-text No ratings yet
+
+    if loggedInUser
+      form.rating-form(action=`/listings/${listing.id}/rate`, method="POST")
+        label Rate this listing
+        select(name="rating", required)
+          option(value="") Choose rating
+          option(value="1") 1
+          option(value="2") 2
+          option(value="3") 3
+          option(value="4") 4
+          option(value="5") 5
+        button(type="submit") Submit Rating
+    else
+      p
+        a(href="/login") Login to rate this listing
 
     div.card-footer
       p
